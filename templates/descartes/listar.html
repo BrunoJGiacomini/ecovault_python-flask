@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Descartes</h1>
+
+<a
+    href="/descartes/novo"
+    class="btn btn-success mb-3">
+
+    Novo Descarte
+
+</a>
+
+<table class="table table-striped">
+
+    <thead>
+
+        <tr>
+            <th>ID</th>
+            <th>Usuário</th>
+            <th>Ecoponto</th>
+            <th>Material</th>
+            <th>Quantidade</th>
+            <th>Pontos</th>
+        </tr>
+
+    </thead>
+
+    <tbody>
+
+    {% for descarte in descartes %}
+
+        <tr>
+
+            <td>{{ descarte.id }}</td>
+
+            <td>{{ descarte.usuario.nome }}</td>
+
+            <td>{{ descarte.ecoponto.nome }}</td>
+
+            <td>{{ descarte.material }}</td>
+
+            <td>{{ descarte.quantidade }}</td>
+
+            <td>{{ descarte.pontos_gerados }}</td>
+
+        </tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Usuários</h1>
+
+<a href="/usuarios/novo" class="btn btn-success mb-3">
+    Novo Usuário
+</a>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Pontos</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+    {% for usuario in usuarios %}
+        <tr>
+            <td>{{ usuario.id }}</td>
+            <td>{{ usuario.nome }}</td>
+            <td>{{ usuario.email }}</td>
+            <td>{{ usuario.pontos }}</td>
+            <td>
+                <a href="/usuarios/editar/{{ usuario.id }}" class="btn btn-warning btn-sm">
+                    Editar
+                </a>
+
+                <a href="/usuarios/excluir/{{ usuario.id }}"
+                   class="btn btn-danger btn-sm"
+                   onclick="return confirm('Tem certeza que deseja excluir este usuário?')">
+                    Excluir
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

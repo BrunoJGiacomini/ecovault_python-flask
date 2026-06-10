@@ -1,0 +1,94 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Ecopontos</h1>
+
+<form method="GET" class="mb-3">
+
+    <div class="row">
+
+        <div class="col-md-8">
+            <input
+                type="text"
+                class="form-control"
+                name="cidade"
+                placeholder="Buscar por cidade"
+            >
+        </div>
+
+        <div class="col-md-4">
+            <button
+                type="submit"
+                class="btn btn-primary">
+
+                Buscar
+
+            </button>
+        </div>
+
+    </div>
+
+</form>
+
+<a href="/ecopontos/novo"
+   class="btn btn-success mb-3">
+
+    Novo Ecoponto
+
+</a>
+
+<table class="table table-striped">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Nome</th>
+            <th>Cidade</th>
+            <th>Endereço</th>
+            <th>Material</th>
+            <th>Ações</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for ecoponto in ecopontos %}
+
+        <tr>
+    <td>{{ ecoponto.id }}</td>
+    <td>{{ ecoponto.nome }}</td>
+    <td>{{ ecoponto.cidade }}</td>
+    <td>{{ ecoponto.endereco }}</td>
+    <td>{{ ecoponto.tipo_material }}</td>
+
+    <td>
+
+        <a
+            href="/ecopontos/editar/{{ ecoponto.id }}"
+            class="btn btn-warning btn-sm">
+
+            Editar
+
+        </a>
+
+        <a
+            href="/ecopontos/excluir/{{ ecoponto.id }}"
+            class="btn btn-danger btn-sm"
+            onclick="return confirm('Deseja excluir?')">
+
+            Excluir
+
+        </a>
+
+    </td>
+
+</tr>
+
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+{% endblock %}

@@ -1,0 +1,75 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Novo Descarte</h1>
+
+<form method="POST">
+
+    <div class="mb-3">
+        <label>Usuário</label>
+
+        <select
+            name="usuario_id"
+            class="form-control">
+
+            {% for usuario in usuarios %}
+
+            <option value="{{ usuario.id }}">
+                {{ usuario.nome }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Ecoponto</label>
+
+        <select
+            name="ecoponto_id"
+            class="form-control">
+
+            {% for ecoponto in ecopontos %}
+
+            <option value="{{ ecoponto.id }}">
+                {{ ecoponto.nome }}
+            </option>
+
+            {% endfor %}
+
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label>Material</label>
+
+        <input
+            type="text"
+            name="material"
+            class="form-control"
+            required>
+    </div>
+
+    <div class="mb-3">
+        <label>Quantidade</label>
+
+        <input
+            type="number"
+            name="quantidade"
+            class="form-control"
+            required>
+    </div>
+
+    <button
+        type="submit"
+        class="btn btn-success">
+
+        Registrar
+
+    </button>
+
+</form>
+
+{% endblock %}
